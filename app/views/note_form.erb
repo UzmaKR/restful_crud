@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Welcome to Evernotes!</h1>
+
+  <div class="error_messages">
+    <% if @note && @note.errors.any? %>
+      <% @note.errors.full_messages.each do |msg| %>
+      <% p msg %>
+      <%= msg %> </br>
+      <% end %>
+    <% end %>
+    </br>
+  </div>
+
+<!-- If note id exists, need edit form
+     If note id does not exist (new form, errors in form), still need create form -->
+  <% if (@note && @note.id) %>
+    <form action="/notes/<%= @note.id %>" method='post' value="notes">
+  <% else %>
+    <form action='/notes' method='post' value="notes">
+  <% end %>
+
+    <b>Title:</b></br>
+    <input type="text" name="notes[title]" value="<%= (@note.title if @note) || 'type a title' %>" ></br></br>
+    <b>Content:</b></br>
+    <input type="text" name="notes[content]" value="<%= (@note.content if @note) || 'type content' %>"></br></br>
+    <input type="submit" value="Update note">
+  </form>
+
+</div>
