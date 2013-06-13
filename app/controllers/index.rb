@@ -31,18 +31,28 @@ end
 
 #Edit : save updates
 # no validations
-post '/notes/:id' do
-  @note = Note.find(params[:id])
-  @note.update_attributes(params[:notes])
-  @note.save
-  redirect '/'
-end
+# post '/notes/:id' do
+#   @note = Note.find(params[:id])
+#   @note.update_attributes(params[:notes])
+#   @note.save
+#   redirect '/'
+# end
+put '/notes' do
+   @note = Note.find(params[:id])
+   @note.update_attributes(params[:notes])
+   @note.save
+   redirect '/'
+ end
 
 
-post '/notes/destroy/:id' do
+
+# post '/notes/destroy/:id' do
+#   Note.find(params[:id]).destroy
+#   redirect '/'
+# end
+
+delete '/notes/destroy/:id' do
   Note.find(params[:id]).destroy
   redirect '/'
 end
-
-
 

@@ -7,7 +7,7 @@ $(document).ready(function() {
         var result = confirm("Want to delete?");
         if (result == true) {
             $.ajax({
-              type: "POST",
+              type: "DELETE",
               url: href_tag
             });
           $(this).closest('tr').slideUp();

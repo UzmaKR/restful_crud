@@ -15,7 +15,10 @@
         <td><%= note.title %></td>
         <td><%= note.content %></td>
         <td><a href="/notes/<%= note.id %>">Edit</a></td>
-        <td><a class="delete_me" href="/notes/destroy/<%= note.id %>">Delete</a></td>
+        <td><form action="/notes/destroy/<%= note.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input class="delete_me" type="submit" value="Delete">
+      </form></td>
       </tr>
     <% end %>
   </table>
